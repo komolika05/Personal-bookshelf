@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+  useLocation,
+} from "react-router-dom";
 import SearchPage from "./pages/SearchPage";
 import BookshelfPage from "./pages/BookshelfPage";
 import "./App.css";
@@ -8,15 +14,11 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <header>
+          <h1>My Personal Bookshelf</h1>
+        </header>
         <nav>
-          <ul>
-            <li>
-              <Link to="/">Search Books</Link>
-            </li>
-            <li>
-              <Link to="/bookshelf">My Bookshelf</Link>
-            </li>
-          </ul>
+          <Navigation />
         </nav>
         <Routes>
           <Route path="/" element={<SearchPage />} />
@@ -24,6 +26,34 @@ function App() {
         </Routes>
       </div>
     </Router>
+  );
+}
+
+function Navigation() {
+  const location = useLocation();
+  return (
+    <ul>
+      {location.pathname === "/" ? (
+        <li>
+          <Link to="/bookshelf">
+            <button>My Bookshelf</button>
+          </Link>
+        </li>
+      ) : (
+        <>
+          <li>
+            <Link to="/">
+              <button>Search Books</button>
+            </Link>
+          </li>
+          <li>
+            <Link to="/bookshelf">
+              <button className="selected">My Bookshelf</button>
+            </Link>
+          </li>
+        </>
+      )}
+    </ul>
   );
 }
 

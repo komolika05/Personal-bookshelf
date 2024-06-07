@@ -3,14 +3,35 @@
   text-align: center;
 }
 
+header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 nav ul {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 nav ul li {
   display: inline;
-  margin: 0 10px;
+}
+
+nav ul li button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #a34e0d;
+  color: white;
+  border-radius: 5px;
+}
+
+nav ul li button.selected {
+  background-color: #b3864a;
 }
 
 .search-results, .bookshelf {
