@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import "./SearchBar.css"; 
+import React, { useState } from 'react';
+import './SearchBar.css';
 
-function SearchBar({ onSearch }) {
-  const [query, setQuery] = useState("");
+function SearchBar({ onSearch, loading }) {
+  const [query, setQuery] = useState('');
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
@@ -10,13 +10,16 @@ function SearchBar({ onSearch }) {
   };
 
   return (
-    <input
-      type="text"
-      value={query}
-      onChange={handleInputChange}
-      placeholder="Search for books..."
-      className="search-input"
-    />
+    <div className="search-bar">
+      <input 
+        type="text" 
+        value={query} 
+        onChange={handleInputChange} 
+        placeholder="Search for books..." 
+        className="search-input"
+      />
+      {loading && <div className="loading-spinner"></div>}
+    </div>
   );
 }
 
